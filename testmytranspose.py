@@ -21,3 +21,11 @@ class TestTranspose(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    
+    def test_dataframe_with_nan_and_str(self):
+        D = np.array([1, 2, 3, 4])
+        E = np.array(["red", "white", "red", np.nan])
+        F = np.array([True, True, True, False])
+        df = pd.DataFrame({"d": D, "e": E, "f": F})
+        expected = df.transpose()
+        self.assertTrue(mytranspose(df).equals(expected))
